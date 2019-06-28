@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- XML Schema fuer NoNeK (Nordmitteleuropäische Neolithische Keramik)
+Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus dem nördlichen Mitteleuropa - (Ertebølle, Trichterbecherkultur,Einzelgrabkultur, Glockenbecherkultur) mit einer Erweiterung fürmetallzeitliche Keramik. http://www.uf.uni-erlangen.de/wp-content/uploads/nonek_v29.pdf
+-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="LiteraturzitatType">
+        <xs:sequence>
+            <xs:element name="Kurzzitat" type="xs:string" />
+            <xs:element name="Zitat" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="KoordinatenTyp">
+        <xs:sequence>
+            <xs:element name="Rechts" type="xs:decimal" />
+            <xs:element name="Hoch" type="xs:decimal" />
+            <xs:element name="Hoehe" type="xs:decimal" />
+            <xs:element name="EPSG" type="xs:nonNegativeInteger" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ZonenTyp">
+        <xs:sequence>
+            <xs:element name="Erhaltung" type="xs:nonNegativeInteger" />
+            <xs:element name="Verzierungsanteil" type="xs:nonNegativeInteger" />
+            <xs:element name="Hoehe" type="xs:nonNegativeInteger" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AllgemeineDaten">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Urheber">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Name" type="xs:string" />
+                            <xs:element name="Institut" type="xs:string" />
+                            <xs:element name="Strasse" type="xs:string" />
+                            <xs:element name="Ort" type="xs:string" />
+                            <xs:element name="Land" type="xs:string" />
+                            <xs:element name="PLZ" type="xs:string" />
+                            <xs:element name="EMail" type="xs:string" />
+                            <xs:element name="Telefon" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Fundstelle">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Staat" type="xs:string" />
+                            <xs:element name="RegionaleEinheit" type="xs:string" />
+                            <xs:element name="Kennziffer" type="xs:string" />
+                            <xs:element name="Fundstellenname" type="xs:string" />
+                            <xs:element name="Fundstellennummer" type="xs:string" />
+                            <xs:element name="Koordinaten" type="KoordinatenTyp" />
+                            <xs:element name="Befundgattung" type="xs:string" />
+                            <xs:element name="Datierung" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Literaturzitat" type="LiteraturzitatType" />
+                <xs:element name="Aufnahme" type="xs:date" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Gefaesseinheit">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:element name="GefaesseinheitDetails">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ID" type="xs:nonNegativeInteger" />
+                            <xs:element name="Scherbenanzahl" type="xs:nonNegativeInteger" />
+                            <xs:element name="Anpassung" type="xs:nonNegativeInteger" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Formblatt1">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                            <xs:element name="Kennung">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Befundnummer" type="xs:string" />
+                                        <xs:element name="Positionsnummer" type="xs:string" />
+                                        <xs:element name="Individiualnummer" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Koordinate" type="KoordinatenTyp" />
+                                        <xs:element name="Datenquelle" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Literatur" type="LiteraturzitatType" />
+                                        <xs:element name="Abtrag" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Erhaltung">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ErhaltungGrobansprache" type="xs:nonNegativeInteger" />
+                                        <xs:element name="ErhaltungDetail" type="xs:nonNegativeInteger" />
+                                        <xs:element name="SicherheitOrientierung" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Bruchkante" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Scherbenzahl">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="n-Randscherben" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="n-Wandscherben" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="n-Bodenscherben" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="n-sonstigeScherben" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Metrik">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AllgemeineMetrik">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="GewichtZehntelGr" type="xs:decimal" />
+                                                    <xs:element name="LageGroessterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GroessterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitGroessterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="LageKleinsterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="KleinsterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitKleinsterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="MindesthoeheUnterteil" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="MindesthoeheOberteil" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Flaeche" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Rand">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="DickeRandMin">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger" />
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="DickeRandMax" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Randdurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitRanddurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Randneigung" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Boden">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="DickeBodenMin" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="DickeBodenMax" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="BodenDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Bodenwinkel" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitBodenDurchmesser" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Wand">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="DickeWandMin" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="DickeWandMax" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Umbrueche">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="UmbruchLageUnbekannt" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="UmbruchRand-Schulter" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="mbruchRand-Bauch" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="UmbruchSchulter-Bauch" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="UmbruchBoden-Wand" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Wölbung" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Farbe">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="HauptfarbeAussen" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="HauptfarbeInnen" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="SekundaereVeraenderung" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Herstellung">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Magerung">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Magerungsmittel" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Beschaffung" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Menge" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Korngroesse" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="n-Magerungskoerner" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Magerung_qcm" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="OberflaecheAussen" type="xs:nonNegativeInteger" />
+                                        <xs:element name="OberflaecheInnen" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Brennathmosphaere" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Aufbau" type="xs:nonNegativeInteger" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Form">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="GrobeKlassifikation" type="xs:nonNegativeInteger" />
+                                        <xs:element name="FeineKlassifikation" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Randform">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Randabschluss" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="RandabschlussGerade" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Bodenform" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Bauch" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Schulter" type="xs:nonNegativeInteger" />
+                                        <xs:element name="RandGesamt" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Zonen">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Bauchzone" type="ZonenTyp" />
+                                                    <xs:element name="Schulterzone" type="ZonenTyp" />
+                                                    <xs:element name="Randzone" type="ZonenTyp" />
+                                                    <xs:element name="Fuss" type="ZonenTyp" />
+                                                    <xs:element name="WandscherbeVerzierung" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="HenkelOesenKnubben">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Typ" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Postiton" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Anzahl" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Hoehe" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Laenge" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Breite" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Loch">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="MaxInnenDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Lochrichtung" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Orientierung" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Befestigung" type="xs:nonNegativeInteger" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Sonstiges">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="DetailVerzierung" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Sonstiges" type="xs:nonNegativeInteger" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Profilaufahme">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                                        <xs:element name="X-Koordinate" type="xs:decimal" />
+                                        <xs:element name="Y-Koordinate" type="xs:decimal" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Formblatt2">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="Individualnummer" type="xs:nonNegativeInteger" />
+                            <xs:element name="Verzierung">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Lokalisation">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Allgemein" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="RandDetail" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Schulter" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Bauch" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Umbruch" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Unbestimmbar" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Boden" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Handhabe" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Ornament">
+                                            <xs:complexType>
+                                                <xs:sequence maxOccurs="unbounded">
+                                                    <xs:element name="Muster">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Mustertyp" type="xs:nonNegativeInteger" />
+                                                                <xs:element name="Vollstaendigkeit" type="xs:nonNegativeInteger" />
+                                                                <xs:element name="Orientierung" type="xs:nonNegativeInteger" />
+                                                                <xs:element name="Element">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence maxOccurs="unbounded">
+                                                                            <xs:element name="Typ" type="xs:nonNegativeInteger" />
+                                                                            <xs:element name="Anordnung" type="xs:nonNegativeInteger" />
+                                                                            <xs:element name="Technik" type="xs:nonNegativeInteger" />
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
