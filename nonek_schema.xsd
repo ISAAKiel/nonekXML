@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!-- XML Schema fuer NoNeK (Nordmitteleuropäische Neolithische Keramik)
 Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus dem nördlichen Mitteleuropa - (Ertebølle, Trichterbecherkultur,Einzelgrabkultur, Glockenbecherkultur) mit einer Erweiterung fürmetallzeitliche Keramik. http://www.uf.uni-erlangen.de/wp-content/uploads/nonek_v29.pdf
+Angabe der Enumeration nicht fuer Muster, Ornamente und Elemente.
 -->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="LiteraturzitatType">
@@ -19,8 +20,30 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
     </xs:complexType>
     <xs:complexType name="ZonenTyp">
         <xs:sequence>
-            <xs:element name="Erhaltung" type="xs:nonNegativeInteger" />
-            <xs:element name="Verzierungsanteil" type="xs:nonNegativeInteger" />
+            <xs:element name="Erhaltung">
+                <xs:simpleType>
+                    <xs:restriction base="xs:nonNegativeInteger">
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                        <xs:enumeration value="2" />
+                        <xs:enumeration value="3" />
+                        <xs:enumeration value="9" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Verzierungsanteil">
+                <xs:simpleType>
+                    <xs:restriction base="xs:nonNegativeInteger">
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                        <xs:enumeration value="2" />
+                        <xs:enumeration value="3" />
+                        <xs:enumeration value="4" />
+                        <xs:enumeration value="5" />
+                        <xs:enumeration value="9" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="Hoehe" type="xs:nonNegativeInteger" />
         </xs:sequence>
     </xs:complexType>
@@ -68,7 +91,19 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                         <xs:sequence>
                             <xs:element name="ID" type="xs:nonNegativeInteger" />
                             <xs:element name="Scherbenanzahl" type="xs:nonNegativeInteger" />
-                            <xs:element name="Anpassung" type="xs:nonNegativeInteger" />
+                            <xs:element name="Anpassung">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:nonNegativeInteger">
+                                        <xs:totalDigits value="1" />
+                                        <xs:enumeration value="0" />
+                                        <xs:enumeration value="1" />
+                                        <xs:enumeration value="2" />
+                                        <xs:enumeration value="3" />
+                                        <xs:enumeration value="4" />
+                                        <xs:enumeration value="9" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -82,7 +117,17 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                         <xs:element name="Positionsnummer" type="xs:string" />
                                         <xs:element name="Individiualnummer" type="xs:nonNegativeInteger" />
                                         <xs:element name="Koordinate" type="KoordinatenTyp" />
-                                        <xs:element name="Datenquelle" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Datenquelle">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                         <xs:element name="Literatur" type="LiteraturzitatType" />
                                         <xs:element name="Abtrag" type="xs:string" />
                                     </xs:sequence>
@@ -91,10 +136,92 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                             <xs:element name="Erhaltung">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="ErhaltungGrobansprache" type="xs:nonNegativeInteger" />
-                                        <xs:element name="ErhaltungDetail" type="xs:nonNegativeInteger" />
-                                        <xs:element name="SicherheitOrientierung" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Bruchkante" type="xs:nonNegativeInteger" />
+                                        <xs:element name="ErhaltungGrobansprache">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="9" />
+                                                    <xs:enumeration value="30" />
+                                                    <xs:enumeration value="44" />
+                                                    <xs:enumeration value="31" />
+                                                    <xs:enumeration value="32" />
+                                                    <xs:enumeration value="33" />
+                                                    <xs:enumeration value="34" />
+                                                    <xs:enumeration value="11" />
+                                                    <xs:enumeration value="12" />
+                                                    <xs:enumeration value="13" />
+                                                    <xs:enumeration value="14" />
+                                                    <xs:enumeration value="15" />
+                                                    <xs:enumeration value="16" />
+                                                    <xs:enumeration value="17" />
+                                                    <xs:enumeration value="18" />
+                                                    <xs:enumeration value="20" />
+                                                    <xs:enumeration value="43" />
+                                                    <xs:enumeration value="21" />
+                                                    <xs:enumeration value="22" />
+                                                    <xs:enumeration value="23" />
+                                                    <xs:enumeration value="24" />
+                                                    <xs:enumeration value="35" />
+                                                    <xs:enumeration value="36" />
+                                                    <xs:enumeration value="37" />
+                                                    <xs:enumeration value="38" />
+                                                    <xs:enumeration value="39" />
+                                                    <xs:enumeration value="40" />
+                                                    <xs:enumeration value="41" />
+                                                    <xs:enumeration value="42" />
+                                                    <xs:enumeration value="99" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="ErhaltungDetail">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="9" />
+                                                    <xs:enumeration value="11" />
+                                                    <xs:enumeration value="12" />
+                                                    <xs:enumeration value="13" />
+                                                    <xs:enumeration value="14" />
+                                                    <xs:enumeration value="15" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="SicherheitOrientierung">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="Bruchkante">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="9" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                         <xs:element name="Scherbenzahl">
                                             <xs:complexType>
                                                 <xs:sequence>
@@ -115,12 +242,56 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                             <xs:complexType>
                                                 <xs:sequence>
                                                     <xs:element name="GewichtZehntelGr" type="xs:decimal" />
-                                                    <xs:element name="LageGroessterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="LageGroessterDurchmesser">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="7" />
+                                                                <xs:enumeration value="8" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                     <xs:element name="GroessterDurchmesser" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="GenauigkeitGroessterDurchmesser" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="LageKleinsterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitGroessterDurchmesser">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="LageKleinsterDurchmesser">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="7" />
+                                                                <xs:enumeration value="8" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                     <xs:element name="KleinsterDurchmesser" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="GenauigkeitKleinsterDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitKleinsterDurchmesser">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                     <xs:element name="MindesthoeheUnterteil" type="xs:nonNegativeInteger" />
                                                     <xs:element name="MindesthoeheOberteil" type="xs:nonNegativeInteger" />
                                                     <xs:element name="Flaeche" type="xs:nonNegativeInteger" />
@@ -137,7 +308,16 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                                     </xs:element>
                                                     <xs:element name="DickeRandMax" type="xs:nonNegativeInteger" />
                                                     <xs:element name="Randdurchmesser" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="GenauigkeitRanddurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitRanddurchmesser">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                     <xs:element name="Randneigung" type="xs:nonNegativeInteger" />
                                                 </xs:sequence>
                                             </xs:complexType>
@@ -149,7 +329,16 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                                     <xs:element name="DickeBodenMax" type="xs:nonNegativeInteger" />
                                                     <xs:element name="BodenDurchmesser" type="xs:nonNegativeInteger" />
                                                     <xs:element name="Bodenwinkel" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="GenauigkeitBodenDurchmesser" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="GenauigkeitBodenDurchmesser">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
@@ -164,21 +353,165 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                         <xs:element name="Umbrueche">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="UmbruchLageUnbekannt" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="UmbruchRand-Schulter" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="mbruchRand-Bauch" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="UmbruchSchulter-Bauch" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="UmbruchBoden-Wand" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Wölbung" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="UmbruchLageUnbekannt">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="UmbruchRand-Schulter">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="mbruchRand-Bauch">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="UmbruchSchulter-Bauch">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="UmbruchBoden-Wand">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Wölbung">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
                                         <xs:element name="Farbe">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="HauptfarbeAussen" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="HauptfarbeInnen" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="SekundaereVeraenderung" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="HauptfarbeAussen">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="10" />
+                                                                <xs:enumeration value="11" />
+                                                                <xs:enumeration value="22" />
+                                                                <xs:enumeration value="31" />
+                                                                <xs:enumeration value="32" />
+                                                                <xs:enumeration value="33" />
+                                                                <xs:enumeration value="34" />
+                                                                <xs:enumeration value="41" />
+                                                                <xs:enumeration value="42" />
+                                                                <xs:enumeration value="43" />
+                                                                <xs:enumeration value="51" />
+                                                                <xs:enumeration value="52" />
+                                                                <xs:enumeration value="53" />
+                                                                <xs:enumeration value="54" />
+                                                                <xs:enumeration value="61" />
+                                                                <xs:enumeration value="96" />
+                                                                <xs:enumeration value="97" />
+                                                                <xs:enumeration value="98" />
+                                                                <xs:enumeration value="99" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="HauptfarbeInnen">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="10" />
+                                                                <xs:enumeration value="11" />
+                                                                <xs:enumeration value="22" />
+                                                                <xs:enumeration value="31" />
+                                                                <xs:enumeration value="32" />
+                                                                <xs:enumeration value="33" />
+                                                                <xs:enumeration value="34" />
+                                                                <xs:enumeration value="41" />
+                                                                <xs:enumeration value="42" />
+                                                                <xs:enumeration value="43" />
+                                                                <xs:enumeration value="51" />
+                                                                <xs:enumeration value="52" />
+                                                                <xs:enumeration value="53" />
+                                                                <xs:enumeration value="54" />
+                                                                <xs:enumeration value="61" />
+                                                                <xs:enumeration value="96" />
+                                                                <xs:enumeration value="97" />
+                                                                <xs:enumeration value="98" />
+                                                                <xs:enumeration value="99" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="SekundaereVeraenderung">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
@@ -191,39 +524,340 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                         <xs:element name="Magerung">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="Magerungsmittel" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Beschaffung" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Menge" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Magerungsmittel">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="99" />
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="11" />
+                                                                <xs:enumeration value="21" />
+                                                                <xs:enumeration value="22" />
+                                                                <xs:enumeration value="24" />
+                                                                <xs:enumeration value="25" />
+                                                                <xs:enumeration value="26" />
+                                                                <xs:enumeration value="27" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="33" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="7" />
+                                                                <xs:enumeration value="31" />
+                                                                <xs:enumeration value="32" />
+                                                                <xs:enumeration value="41" />
+                                                                <xs:enumeration value="42" />
+                                                                <xs:enumeration value="51" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Beschaffung">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Menge">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                     <xs:element name="Korngroesse" type="xs:nonNegativeInteger" />
                                                     <xs:element name="n-Magerungskoerner" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Magerung_qcm" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Magerung_qcm">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="7" />
+                                                                <xs:enumeration value="8" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="OberflaecheAussen" type="xs:nonNegativeInteger" />
-                                        <xs:element name="OberflaecheInnen" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Brennathmosphaere" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Aufbau" type="xs:nonNegativeInteger" />
+                                        <xs:element name="OberflaecheAussen">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="99" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="10" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="OberflaecheInnen">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="99" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="10" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="Brennathmosphaere">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="9" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="Aufbau">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="10" />
+                                                    <xs:enumeration value="12" />
+                                                    <xs:enumeration value="13" />
+                                                    <xs:enumeration value="14" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="Form">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="GrobeKlassifikation" type="xs:nonNegativeInteger" />
-                                        <xs:element name="FeineKlassifikation" type="xs:nonNegativeInteger" />
+                                        <xs:element name="GrobeKlassifikation">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="10" />
+                                                    <xs:enumeration value="11" />
+                                                    <xs:enumeration value="12" />
+                                                    <xs:enumeration value="13" />
+                                                    <xs:enumeration value="14" />
+                                                    <xs:enumeration value="15" />
+                                                    <xs:enumeration value="20" />
+                                                    <xs:enumeration value="21" />
+                                                    <xs:enumeration value="22" />
+                                                    <xs:enumeration value="23" />
+                                                    <xs:enumeration value="100" />
+                                                    <xs:enumeration value="111" />
+                                                    <xs:enumeration value="121" />
+                                                    <xs:enumeration value="122" />
+                                                    <xs:enumeration value="113" />
+                                                    <xs:enumeration value="123" />
+                                                    <xs:enumeration value="114" />
+                                                    <xs:enumeration value="124" />
+                                                    <xs:enumeration value="134" />
+                                                    <xs:enumeration value="116" />
+                                                    <xs:enumeration value="135" />
+                                                    <xs:enumeration value="126" />
+                                                    <xs:enumeration value="136" />
+                                                    <xs:enumeration value="129" />
+                                                    <xs:enumeration value="526" />
+                                                    <xs:enumeration value="139" />
+                                                    <xs:enumeration value="101" />
+                                                    <xs:enumeration value="102" />
+                                                    <xs:enumeration value="103" />
+                                                    <xs:enumeration value="200" />
+                                                    <xs:enumeration value="211" />
+                                                    <xs:enumeration value="231" />
+                                                    <xs:enumeration value="232" />
+                                                    <xs:enumeration value="234" />
+                                                    <xs:enumeration value="235" />
+                                                    <xs:enumeration value="236" />
+                                                    <xs:enumeration value="233" />
+                                                    <xs:enumeration value="201" />
+                                                    <xs:enumeration value="202" />
+                                                    <xs:enumeration value="203" />
+                                                    <xs:enumeration value="244" />
+                                                    <xs:enumeration value="300" />
+                                                    <xs:enumeration value="331" />
+                                                    <xs:enumeration value="321" />
+                                                    <xs:enumeration value="322" />
+                                                    <xs:enumeration value="324" />
+                                                    <xs:enumeration value="624" />
+                                                    <xs:enumeration value="326" />
+                                                    <xs:enumeration value="335" />
+                                                    <xs:enumeration value="301" />
+                                                    <xs:enumeration value="302" />
+                                                    <xs:enumeration value="303" />
+                                                    <xs:enumeration value="344" />
+                                                    <xs:enumeration value="991" />
+                                                    <xs:enumeration value="911" />
+                                                    <xs:enumeration value="921" />
+                                                    <xs:enumeration value="931" />
+                                                    <xs:enumeration value="994" />
+                                                    <xs:enumeration value="917" />
+                                                    <xs:enumeration value="927" />
+                                                    <xs:enumeration value="937" />
+                                                    <xs:enumeration value="995" />
+                                                    <xs:enumeration value="915" />
+                                                    <xs:enumeration value="925" />
+                                                    <xs:enumeration value="935" />
+                                                    <xs:enumeration value="996" />
+                                                    <xs:enumeration value="916" />
+                                                    <xs:enumeration value="926" />
+                                                    <xs:enumeration value="936" />
+                                                    <xs:enumeration value="992" />
+                                                    <xs:enumeration value="998" />
+                                                    <xs:enumeration value="112" />
+                                                    <xs:enumeration value="132" />
+                                                    <xs:enumeration value="212" />
+                                                    <xs:enumeration value="222" />
+                                                    <xs:enumeration value="312" />
+                                                    <xs:enumeration value="332" />
+                                                    <xs:enumeration value="115" />
+                                                    <xs:enumeration value="125" />
+                                                    <xs:enumeration value="215" />
+                                                    <xs:enumeration value="225" />
+                                                    <xs:enumeration value="315" />
+                                                    <xs:enumeration value="325" />
+                                                    <xs:enumeration value="503" />
+                                                    <xs:enumeration value="403" />
+                                                    <xs:enumeration value="404" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                         <xs:element name="Randform">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="Randabschluss" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="RandabschlussGerade" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Randabschluss">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="99" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="7" />
+                                                                <xs:enumeration value="8" />
+                                                                <xs:enumeration value="9" />
+                                                                <xs:enumeration value="10" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="RandabschlussGerade">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="6" />
+                                                                <xs:enumeration value="7" />
+                                                                <xs:enumeration value="8" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="Bodenform" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Bauch" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Schulter" type="xs:nonNegativeInteger" />
-                                        <xs:element name="RandGesamt" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Bodenform">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="9" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="10" />
+                                                    <xs:enumeration value="11" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="Bauch">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="99" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="Schulter">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="RandGesamt">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                         <xs:element name="Zonen">
                                             <xs:complexType>
                                                 <xs:sequence>
@@ -231,7 +865,19 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                                     <xs:element name="Schulterzone" type="ZonenTyp" />
                                                     <xs:element name="Randzone" type="ZonenTyp" />
                                                     <xs:element name="Fuss" type="ZonenTyp" />
-                                                    <xs:element name="WandscherbeVerzierung" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="WandscherbeVerzierung">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                                <xs:enumeration value="3" />
+                                                                <xs:enumeration value="4" />
+                                                                <xs:enumeration value="5" />
+                                                                <xs:enumeration value="9" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
@@ -242,8 +888,38 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="Typ" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Postiton" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Anzahl" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Postiton">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="9" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="2" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="Anzahl">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="9" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                         <xs:element name="Hoehe" type="xs:nonNegativeInteger" />
                                         <xs:element name="Laenge" type="xs:nonNegativeInteger" />
                                         <xs:element name="Breite" type="xs:nonNegativeInteger" />
@@ -251,12 +927,42 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                             <xs:complexType>
                                                 <xs:sequence>
                                                     <xs:element name="MaxInnenDurchmesser" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Lochrichtung" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Lochrichtung">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="9" />
+                                                                <xs:enumeration value="1" />
+                                                                <xs:enumeration value="2" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="Orientierung" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Befestigung" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Orientierung">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="9" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="Befestigung">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="9" />
+                                                    <xs:enumeration value="1" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -264,7 +970,25 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="DetailVerzierung" type="xs:nonNegativeInteger" />
-                                        <xs:element name="Sonstiges" type="xs:nonNegativeInteger" />
+                                        <xs:element name="Sonstiges">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:nonNegativeInteger">
+                                                    <xs:enumeration value="0" />
+                                                    <xs:enumeration value="10" />
+                                                    <xs:enumeration value="11" />
+                                                    <xs:enumeration value="12" />
+                                                    <xs:enumeration value="13" />
+                                                    <xs:enumeration value="2" />
+                                                    <xs:enumeration value="3" />
+                                                    <xs:enumeration value="4" />
+                                                    <xs:enumeration value="5" />
+                                                    <xs:enumeration value="6" />
+                                                    <xs:enumeration value="7" />
+                                                    <xs:enumeration value="8" />
+                                                    <xs:enumeration value="99" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -289,14 +1013,110 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                         <xs:element name="Lokalisation">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="Allgemein" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="RandDetail" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Schulter" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Bauch" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Umbruch" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Unbestimmbar" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Boden" type="xs:nonNegativeInteger" />
-                                                    <xs:element name="Handhabe" type="xs:nonNegativeInteger" />
+                                                    <xs:element name="Allgemein">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="10" />
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="99" />
+                                                                <xs:enumeration value="11" />
+                                                                <xs:enumeration value="12" />
+                                                                <xs:enumeration value="13" />
+                                                                <xs:enumeration value="14" />
+                                                                <xs:enumeration value="15" />
+                                                                <xs:enumeration value="18" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="RandDetail">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="99" />
+                                                                <xs:enumeration value="21" />
+                                                                <xs:enumeration value="22" />
+                                                                <xs:enumeration value="23" />
+                                                                <xs:enumeration value="24" />
+                                                                <xs:enumeration value="25" />
+                                                                <xs:enumeration value="26" />
+                                                                <xs:enumeration value="27" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Schulter">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="30" />
+                                                                <xs:enumeration value="00" />
+                                                                <xs:enumeration value="99" />
+                                                                <xs:enumeration value="31" />
+                                                                <xs:enumeration value="32" />
+                                                                <xs:enumeration value="33" />
+                                                                <xs:enumeration value="34" />
+                                                                <xs:enumeration value="35" />
+                                                                <xs:enumeration value="38" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Bauch">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="40" />
+                                                                <xs:enumeration value="00" />
+                                                                <xs:enumeration value="99" />
+                                                                <xs:enumeration value="41" />
+                                                                <xs:enumeration value="42" />
+                                                                <xs:enumeration value="43" />
+                                                                <xs:enumeration value="44" />
+                                                                <xs:enumeration value="48" />
+                                                                <xs:enumeration value="45" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Umbruch">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="70" />
+                                                                <xs:enumeration value="71" />
+                                                                <xs:enumeration value="72" />
+                                                                <xs:enumeration value="73" />
+                                                                <xs:enumeration value="74" />
+                                                                <xs:enumeration value="79" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Unbestimmbar">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="60" />
+                                                                <xs:enumeration value="61" />
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="99" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Boden">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="50" />
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="99" />
+                                                                <xs:enumeration value="51" />
+                                                                <xs:enumeration value="52" />
+                                                                <xs:enumeration value="53" />
+                                                                <xs:enumeration value="58" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="Handhabe">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:nonNegativeInteger">
+                                                                <xs:enumeration value="95" />
+                                                                <xs:enumeration value="0" />
+                                                                <xs:enumeration value="99" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
@@ -307,8 +1127,29 @@ Mischka u. Lorenz 2014: Ein Keramikaufnahmesystem für neolithische Keramik aus 
                                                         <xs:complexType>
                                                             <xs:sequence>
                                                                 <xs:element name="Mustertyp" type="xs:nonNegativeInteger" />
-                                                                <xs:element name="Vollstaendigkeit" type="xs:nonNegativeInteger" />
-                                                                <xs:element name="Orientierung" type="xs:nonNegativeInteger" />
+                                                                <xs:element name="Vollstaendigkeit">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:nonNegativeInteger">
+                                                                            <xs:enumeration value="0" />
+                                                                            <xs:enumeration value="1" />
+                                                                            <xs:enumeration value="2" />
+                                                                            <xs:enumeration value="9" />
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
+                                                                <xs:element name="Orientierung">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:nonNegativeInteger">
+                                                                            <xs:enumeration value="0" />
+                                                                            <xs:enumeration value="9" />
+                                                                            <xs:enumeration value="2" />
+                                                                            <xs:enumeration value="3" />
+                                                                            <xs:enumeration value="4" />
+                                                                            <xs:enumeration value="5" />
+                                                                            <xs:enumeration value="6" />
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
                                                                 <xs:element name="Element">
                                                                     <xs:complexType>
                                                                         <xs:sequence maxOccurs="unbounded">
